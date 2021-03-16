@@ -21,17 +21,22 @@ int main()
 			{
 				if (newSentnce == 1 || quotation == 1)
 				{
-					if (islower(c) != 0) /*if the letters inside the quoate aren't upper cases, change it to upper*/
-						(toupper(c));
+					if (islower(c) == 0) /*if the letters inside the quoate aren't upper cases, change it to upper*/
+						toupper(c);
 				}
 				else /*if c is a whice space but not inside a quote or at the beggining of a new line*/
 				{
 					if (islower(c) != 0)
-						((tolower(c))); /*change to a lower case if needed*/
+						tolower(c); /*change to a lower case if needed*/
 				}
 
 				if (isspace(c) != 0) /*if c isn't a white char, we're not at a beggining of a new line*/
 					newSentnce = 0;
+				if (newSentnce == 0  && quotation == 0)
+				{
+					if(islower(c) != 0)
+						tolower(c);
+				}
 			}
 
 			putchar(c);
