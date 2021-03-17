@@ -1,3 +1,5 @@
+/* Doesn't change text inside a double quotes to upper cases*/
+
 #include <stdio.h>
 #include <ctype.h>
 #define IN 1
@@ -23,7 +25,7 @@ int  main(){
 					else 
 					{
 						if(isupper(c) != OUT)
-							C = tolower(c);
+							c = tolower(c);
 					}
 					newSentnce = OUT;
 		}
