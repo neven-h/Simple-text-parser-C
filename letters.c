@@ -1,4 +1,5 @@
-/* Doesn't change text inside a double quotes to upper cases*/
+/*final version is working. add comments and it's done */
+
 
 #include <stdio.h>
 #include <ctype.h>
