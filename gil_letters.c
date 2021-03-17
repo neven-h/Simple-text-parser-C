@@ -33,7 +33,7 @@ int  main(){
 
 
 			if (c == '"' && quotation == OUT) quotation = IN; /*if we entered inside a quoate*/
-			if (c == '.' && quotation == OUT) newSentnce = IN; /*if we're at the beggining of a line*/
+			else if (c == '.' && quotation == OUT) newSentnce = IN; /*if we're at the beggining of a line*/
 			else if (c == '"' && quotation == IN) quotation = OUT; /*if we're at the end of a quoate*/
 	}
 	c = getchar();
