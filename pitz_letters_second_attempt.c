@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <ctype.h>
-#define IN 1
-#define OUT 0
+
 int  main(){
 int newSentnce = 1; /*mode: a beginning of a new sentence*/
 int quotation = 0; /*mode: entering into a quote*/
@@ -12,27 +11,27 @@ printf("\nPlease enter a text:\n");
 c = getchar();
 
 while(c != EOF){
-if(isdigit(c) != OUT) {newSentnce = OUT;}
+if(isdigit(c) != 0) {newSentnce = 0;}
 else {
-if(isspace(c) == OUT)
+if(isspace(c) == 0)
 {
-if(newSentnce == IN || quotation == IN) {
-if (islower(c) != OUT) /* change from lower cases to upper */
+if(newSentnce == 1 || quotation == 1) {
+if (islower(c) != 0) /* change from lower cases to upper */
 c = toupper(c);
 }
 else
 {
-if(isupper(c) != OUT)
+if(isupper(c) != 0)
 c = tolower(c);
 }
-newSentnce = OUT;
+newSentnce = 0;
 }
 putchar(c);
 
 
-if (c == '"' && quotation == OUT) quotation = IN; /*if we entered inside a quoate*/
-if (c == '.' && quotation == OUT) newSentnce = IN; /*if we're at the beginning of a line*/
-else if (c == '"' && quotation == IN) quotation = OUT; /*if we're at the end of a quoate*/
+if (c == '"' && quotation == 0) quotation = 1; /*if we entered inside a quoate*/
+if (c == '.' && quotation == 0) newSentnce = 1; /*if we're at the beginning of a line*/
+else if (c == '"' && quotation == 1) quotation = 0; /*if we're at the end of a quoate*/
 }
 c = getchar();
 }
