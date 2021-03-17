@@ -1,5 +1,9 @@
-/* Now the problem is that the program doesn't change upper cases to lower cases - not when it's inside of a double quote and not when its 
-in the beggining of a sentanse */
+/* Now the problem is that:
+1. the program doesn't change upper cases to lower cases - not when it's inside a double quote and not when its in the beggining of a sentanse 
+2. I do not have a condition for the first char of the text - and I think i also don't have a contidion for all other states where I'd like to change upper to lower 
+3. I think there's a problem with the order opreations - but I don't know what
+4. maybe I could define c to be a char - but do I want to do that? would that solve any problem for me?
+*/
 
 
 #include <stdio.h>
@@ -14,10 +18,13 @@ int main()
 
 	while ((c = getchar()) != EOF)
 	{
-		if (isdigit(c) != 0) newSentnce = 0;
+		if (isdigit(c) != 0) {newSentnce = 0;}
 		else
 		{
-			if (isspace(c) == 0)
+			if (c == '"' && quotation == 0) quotation = 1; /*if we entered inside a quoate*/
+			if (c == '.' && quotation == 0) newSentnce = 1; /*if we're at the beggining of a line*/
+			if  (c == '"' && quotation == 1) quotation = 0; /*if we're at the end of a quoate*/
+			if (!isspace(c))
 			{
 				if (newSentnce == 1 || quotation == 1)
 				{
@@ -40,10 +47,6 @@ int main()
 			}
 
 			putchar(c);
-
-			if (c == '"' && quotation == 0) quotation = 1; /*if we entered inside a quoate*/
-			if (c == '.' && quotation == 0) newSentnce = 1; /*if we're at the beggining of a line*/
-			else if (c == '"' && quotation == 1) quotation = 0; /*if we're at the end of a quoate*/
 		}
 	}
 
